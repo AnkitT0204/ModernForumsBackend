@@ -45,7 +45,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:3000'],
+    origin: ['https://modernforumsbackend.onrender.com'],
     methods: ['GET', 'POST'],
     credentials: true
   },
@@ -65,7 +65,8 @@ const logger = winston.createLogger({
 
 app.use(helmet());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://modernforumsbackend.onrender.com',
+   methods: ['GET', 'POST'],
   credentials: true
 }));
 app.use(express.json());
