@@ -45,7 +45,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['https://modernforumsbackend.onrender.com'],
+    origin: ['https://modernforum.netlify.app'],
     methods: ['GET', 'POST'],
     credentials: true
   },
@@ -65,14 +65,13 @@ const logger = winston.createLogger({
 
 app.use(helmet());
 app.use(cors({
-  origin: 'https://modernforumsbackend.onrender.com',
-   methods: ['GET', 'POST'],
+  origin: 'https://modernforum.netlify.app',
   credentials: true
 }));
 app.use(express.json());
 app.use(limiter);
 app.use('/uploads', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', 'https://modernforum.netlify.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   express.static(path.join(__dirname, 'Uploads'))(req, res, next);
 });
